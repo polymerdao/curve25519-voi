@@ -199,6 +199,26 @@ type edwardsPointInner struct {
 	T field.Element
 }
 
+// GetPointInner returns inner filed elements.
+func (p *EdwardsPoint) GetPointInner() [4]field.Element {
+	var ret [4]field.Element
+	ret[0] = p.inner.X
+	ret[1] = p.inner.Y
+	ret[2] = p.inner.Z
+	ret[3] = p.inner.T
+	return ret
+}
+
+// GetPointChunks returns inner field elements in uint64 arrays.
+func (p *EdwardsPoint) GetPointChunks() [4][5]uint64 {
+	var ret [4][5]uint64
+	ret[0] = p.inner.X.GetInner()
+	ret[1] = p.inner.Y.GetInner()
+	ret[2] = p.inner.Z.GetInner()
+	ret[3] = p.inner.T.GetInner()
+	return ret
+}
+
 // MarshalBinary encodes the Edwards point into a binary form and
 // returns the result.
 //

@@ -56,6 +56,11 @@ type Element struct {
 	inner                    [5]uint64
 }
 
+// GetInner returns inner representation of the element.
+func (fe *Element) GetInner() [5]uint64 {
+	return fe.inner
+}
+
 // Add sets `fe = a + b`, and returns fe.
 func (fe *Element) Add(a, b *Element) *Element {
 	fe.inner[0] = a.inner[0] + b.inner[0]
